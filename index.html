@@ -2,79 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem('theme') ??
+      (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  </script>
+  <link rel="stylesheet" href="./styles.css">
   <title>Frontend Mentor | Browser extensions manager UI</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 0.6875rem; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
 
-  Extensions List
+  <header class="header">
+    <div class="logo">
+      <img src="./assets/images/logo.svg" alt="extensions manager logo" aria-hidden="true">
+      
+    </div>
+    <button type="button" class="theme-toggle" aria-label="Toggle theme">
+      <img src="./assets/images/icon-moon.svg" alt="moon icon to represent dark mode" class="icon-moon">
+      <img src="./assets/images/icon-sun.svg" alt="sun icon to represent light mode" class="icon-sun">
+    </button>
+  </header>
 
-  All
-  Active
-  Inactive
+  <main>
+    <div class="list-heading">
+      <h1>Extensions List</h1>
+      <div class="filters" role="group" aria-label="Filter extensions">
+        <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="active">Active</button>
+        <button type="button" class="filter-btn" data-filter="inactive">Inactive</button>
+      </div>
+    </div>
 
-  <!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
+    <ul class="extensions-list">
 
-  DevLens
-  Quickly inspect page layouts and visualize element boundaries.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-devlens.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>DevLens</h2>
+            <p>Quickly inspect page layouts and visualize element boundaries.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle DevLens"></button>
+        </div>
+      </li>
 
-  StyleSpy
-  Instantly analyze and copy CSS from any webpage element.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-style-spy.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>StyleSpy</h2>
+            <p>Instantly analyze and copy CSS from any webpage element.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle StyleSpy"></button>
+        </div>
+      </li>
 
-  SpeedBoost
-  Optimizes browser resource usage to accelerate page loading.
-  Remove
+      <li class="extension-card" data-active="false">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-speed-boost.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>SpeedBoost</h2>
+            <p>Optimizes browser resource usage to accelerate page loading.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Toggle SpeedBoost"></button>
+        </div>
+      </li>
 
-  JSONWizard
-  Formats, validates, and prettifies JSON responses in-browser.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-json-wizard.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>JSONWizard</h2>
+            <p>Formats, validates, and prettifies JSON responses in-browser.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle JSONWizard"></button>
+        </div>
+      </li>
 
-  TabMaster Pro
-  Organizes browser tabs into groups and sessions.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-tab-master-pro.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>TabMaster Pro</h2>
+            <p>Organizes browser tabs into groups and sessions.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle TabMaster Pro"></button>
+        </div>
+      </li>
 
-  ViewportBuddy
-  Simulates various screen resolutions directly within the browser.
-  Remove
+      <li class="extension-card" data-active="false">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-viewport-buddy.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>ViewportBuddy</h2>
+            <p>Simulates various screen resolutions directly within the browser.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Toggle ViewportBuddy"></button>
+        </div>
+      </li>
 
-  Markup Notes
-  Enables annotation and notes directly onto webpages for collaborative debugging.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-markup-notes.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>Markup Notes</h2>
+            <p>Enables annotation and notes directly onto webpages for collaborative debugging.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle Markup Notes"></button>
+        </div>
+      </li>
 
-  GridGuides
-  Overlay customizable grids and alignment guides on any webpage.
-  Remove
+      <li class="extension-card" data-active="false">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-grid-guides.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>GridGuides</h2>
+            <p>Overlay customizable grids and alignment guides on any webpage.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Toggle GridGuides"></button>
+        </div>
+      </li>
 
-  Palette Picker
-  Instantly extracts color palettes from any webpage.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-palette-picker.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>Palette Picker</h2>
+            <p>Instantly extracts color palettes from any webpage.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle Palette Picker"></button>
+        </div>
+      </li>
 
-  LinkChecker
-  Scans and highlights broken links on any page.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-link-checker.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>LinkChecker</h2>
+            <p>Scans and highlights broken links on any page.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle LinkChecker"></button>
+        </div>
+      </li>
 
-  DOM Snapshot
-  Capture and export DOM structures quickly.
-  Remove
+      <li class="extension-card" data-active="false">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-dom-snapshot.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>DOM Snapshot</h2>
+            <p>Capture and export DOM structures quickly.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="false" aria-label="Toggle DOM Snapshot"></button>
+        </div>
+      </li>
 
-  ConsolePlus
-  Enhanced developer console with advanced filtering and logging.
-  Remove
+      <li class="extension-card" data-active="true">
+        <div class="extension-card__top">
+          <img src="./assets/images/logo-console-plus.svg" alt="" class="extension-card__logo">
+          <div class="extension-card__text">
+            <h2>ConsolePlus</h2>
+            <p>Enhanced developer console with advanced filtering and logging.</p>
+          </div>
+        </div>
+        <div class="extension-card__bottom">
+          <button type="button" class="remove-btn">Remove</button>
+          <button type="button" class="toggle" role="switch" aria-checked="true" aria-label="Toggle ConsolePlus"></button>
+        </div>
+      </li>
+
+    </ul>
+  </main>
 
   <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="#">Helsey ft. Hannah</a>.
   </footer>
+  <script src="./script.js"></script>
+
 </body>
 </html>
