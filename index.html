@@ -3,6 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script>
+    document.documentElement.dataset.theme =
+      localStorage.getItem('theme') ??
+      (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  </script>
+  <link rel="stylesheet" href="./styles.css">
+  <title>Frontend Mentor | Browser extensions manager UI</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
@@ -14,6 +25,12 @@
 
   <header class="header">
     <div class="logo">
+      <img src="./assets/images/logo.svg" alt="extensions manager logo" aria-hidden="true">
+      
+    </div>
+    <button type="button" class="theme-toggle" aria-label="Toggle theme">
+      <img src="./assets/images/icon-moon.svg" alt="moon icon to represent dark mode" class="icon-moon">
+      <img src="./assets/images/icon-sun.svg" alt="sun icon to represent light mode" class="icon-sun">
       <img src="./assets/images/logo.svg" alt="" aria-hidden="true">
       <span>Extensions</span>
     </div>
@@ -37,6 +54,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-devlens.svg" alt="logo for dev lens" class="extension-card__logo">
           <img src="./assets/images/logo-devlens.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>DevLens</h2>
@@ -51,6 +69,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-style-spy.svg" alt="logo for style spy" class="extension-card__logo">
           <img src="./assets/images/logo-style-spy.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>StyleSpy</h2>
@@ -65,6 +84,7 @@
 
       <li class="extension-card" data-active="false">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-speed-boost.svg" alt="logo for speed boost" class="extension-card__logo">
           <img src="./assets/images/logo-speed-boost.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>SpeedBoost</h2>
@@ -79,6 +99,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-json-wizard.svg" alt="logo for JSON wizard" class="extension-card__logo">
           <img src="./assets/images/logo-json-wizard.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>JSONWizard</h2>
@@ -93,6 +114,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-tab-master-pro.svg" alt="logo for TabMaster pro" class="extension-card__logo">
           <img src="./assets/images/logo-tab-master-pro.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>TabMaster Pro</h2>
@@ -107,6 +129,7 @@
 
       <li class="extension-card" data-active="false">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-viewport-buddy.svg" alt="logo for viewport buddy" class="extension-card__logo">
           <img src="./assets/images/logo-viewport-buddy.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>ViewportBuddy</h2>
@@ -121,6 +144,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-markup-notes.svg" alt="logo for markup notes" class="extension-card__logo">
           <img src="./assets/images/logo-markup-notes.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>Markup Notes</h2>
@@ -135,6 +159,7 @@
 
       <li class="extension-card" data-active="false">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-grid-guides.svg" alt="logo for grid guides" class="extension-card__logo">
           <img src="./assets/images/logo-grid-guides.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>GridGuides</h2>
@@ -149,6 +174,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-palette-picker.svg" alt="logo for palette picker" class="extension-card__logo">
           <img src="./assets/images/logo-palette-picker.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>Palette Picker</h2>
@@ -163,6 +189,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-link-checker.svg" alt="logo for link checker" class="extension-card__logo">
           <img src="./assets/images/logo-link-checker.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>LinkChecker</h2>
@@ -177,6 +204,7 @@
 
       <li class="extension-card" data-active="false">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-dom-snapshot.svg" alt="logo for DOM snapshot" class="extension-card__logo">
           <img src="./assets/images/logo-dom-snapshot.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>DOM Snapshot</h2>
@@ -191,6 +219,7 @@
 
       <li class="extension-card" data-active="true">
         <div class="extension-card__top">
+          <img src="./assets/images/logo-console-plus.svg" alt="logo for console plus" class="extension-card__logo">
           <img src="./assets/images/logo-console-plus.svg" alt="" class="extension-card__logo">
           <div class="extension-card__text">
             <h2>ConsolePlus</h2>
@@ -208,6 +237,10 @@
 
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="#">Helsey ft. Hannah</a>.
+  </footer>
+  <script src="./script.js"></script>
+
     Coded by <a href="#">Your Name Here</a>.
   </footer>
 

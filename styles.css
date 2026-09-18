@@ -1,0 +1,425 @@
+/* ---------------------------------------------------------
+   Design tokens (Frontend Mentor style guide)
+   --------------------------------------------------------- */
+:root {
+  --neutral-900: hsl(227, 75%, 14%);
+  --neutral-800: hsl(226, 25%, 17%);
+  --neutral-700: hsl(225, 23%, 24%);
+  --neutral-600: hsl(226, 11%, 37%);
+  --neutral-300: hsl(0, 0%, 78%);
+  --neutral-200: hsl(217, 61%, 90%);
+  --neutral-100: hsl(0, 0%, 93%);
+  --neutral-0: hsl(200, 60%, 99%);
+
+  --red-400: hsl(3, 86%, 64%);
+  --red-500: hsl(3, 71%, 56%);
+  --red-700: hsl(3, 77%, 44%);
+
+  --radius-card: 20px;
+  --radius-panel: 16px;
+  --radius-pill: 999px;
+
+  /* Dark theme (default, as shown in the design) */
+  --bg: linear-gradient(180deg, hsl(227, 75%, 14%) 0%, hsl(226, 25%, 17%) 100%);
+  --surface: var(--neutral-800);
+  --surface-raised: var(--neutral-700);
+  --border: var(--neutral-600);
+  --text: var(--neutral-0);
+  --text-muted: var(--neutral-300);
+  --toggle-track: var(--neutral-600);
+  --focus-ring: var(--red-400);
+}
+
+html[data-theme="light"],
+body.light-mode {
+  --bg: linear-gradient(180deg, hsl(0, 0%, 93%) 0%, hsl(200, 60%, 99%) 100%);
+  --surface: var(--neutral-0);
+  --surface-raised: var(--neutral-100);
+  --border: var(--neutral-200);
+  --text: var(--neutral-900);
+  --text-muted: var(--neutral-600);
+  --toggle-track: var(--neutral-300);
+}
+
+/* ---------------------------------------------------------
+   Base
+   --------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 1.25rem 1rem 3rem;
+  font-family: "Noto Sans", system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  background-attachment: fixed;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   Header
+   --------------------------------------------------------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1140px;
+  margin: 0 auto 2.5rem;
+  padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+  background-color: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-panel);
+}
+
+html[data-theme="light"] .header,
+body.light-mode .header {
+  border-color: var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* The supplied logo.svg is dark-on-light, so invert it in dark mode */
+.logo img {
+  height: 32px;
+}
+
+html:not([data-theme="light"]) .logo img {
+  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-20deg);
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-color: var(--surface-raised);
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--neutral-600);
+}
+
+html[data-theme="light"] .theme-toggle:hover,
+body.light-mode .theme-toggle:hover {
+  background-color: var(--neutral-200);
+}
+
+/* Show the sun in dark mode, the moon in light mode */
+.icon-moon {
+  display: none;
+}
+
+html[data-theme="light"] .icon-sun,
+body.light-mode .icon-sun {
+  display: none;
+}
+
+html[data-theme="light"] .icon-moon,
+body.light-mode .icon-moon {
+  display: block;
+}
+
+/* ---------------------------------------------------------
+   List heading + filters
+   --------------------------------------------------------- */
+main {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.list-heading h1 {
+  font-size: 2.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.filters {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.0625rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--surface-raised);
+}
+
+.filter-btn.is-active {
+  color: var(--neutral-900);
+  background-color: var(--red-400);
+  border-color: var(--red-400);
+  font-weight: 500;
+}
+
+.filter-btn.is-active:hover {
+  background-color: var(--red-500);
+}
+
+html[data-theme="light"] .filter-btn.is-active,
+body.light-mode .filter-btn.is-active {
+  color: var(--neutral-0);
+}
+
+/* ---------------------------------------------------------
+   Extension cards
+   --------------------------------------------------------- */
+.extensions-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  list-style: none;
+}
+
+.extension-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  min-height: 200px;
+  padding: 1.25rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.extensions-list:hover .extension-card {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+
+.extensions-list .extension-card:hover {
+  transform: scale(1.1);
+  filter: blur(0);
+  opacity: 1;
+}
+
+html[data-theme="light"] .extension-card,
+body.light-mode .extension-card {
+  box-shadow: 0 2px 6px hsl(217, 61%, 90%, 0.6);
+}
+
+.extension-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.extension-card__logo {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.extension-card__text h2 {
+  margin-bottom: 0.375rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.extension-card__text p {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.extension-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Remove button */
+.remove-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  color: var(--neutral-900);
+  background-color: var(--red-400);
+  border-color: var(--red-400);
+}
+
+html[data-theme="light"] .remove-btn:hover,
+body.light-mode .remove-btn:hover {
+  color: var(--neutral-0);
+  background-color: var(--red-700);
+  border-color: var(--red-700);
+}
+
+.remove-btn:focus-visible {
+  outline-offset: 3px;
+}
+
+
+    .attribution { font-size: 0.875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+
+/* Toggle switch */
+.toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+  background-color: var(--toggle-track);
+  transition: background-color 0.2s ease;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--neutral-0);
+  transition: transform 0.2s ease;
+}
+
+.toggle:hover {
+  background-color: var(--neutral-700);
+}
+
+html[data-theme="light"] .toggle:hover,
+body.light-mode .toggle:hover {
+  background-color: var(--neutral-600);
+}
+
+.toggle[aria-checked="true"] {
+  background-color: var(--red-400);
+}
+
+.toggle[aria-checked="true"]:hover {
+  background-color: var(--red-500);
+}
+
+.toggle[aria-checked="true"]::after {
+  transform: translateX(16px);
+}
+
+/* Hidden by the filter buttons */
+.extension-card[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.attribution {
+  margin-top: 3rem;
+  color: var(--text-muted);
+}
+
+.attribution a {
+  color: var(--red-700);
+}
+
+.empty-state {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .extensions-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-inline: 1rem;
+  }
+
+  .list-heading {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .list-heading h1 {
+    font-size: 1.75rem;
+  }
+
+  .extensions-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
